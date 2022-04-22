@@ -11,3 +11,10 @@ export function capitalize(str = '') {
 export function sum(a, b) {
   return a + b;
 }
+
+/**
+ * Substract two numbers together
+ */
+export function substract(a, b) {
+  return a - b;
+}
