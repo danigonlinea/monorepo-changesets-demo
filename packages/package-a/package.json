@@ -1,0 +1,9 @@
+{
+  "name": "package-a",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Daniel González Jiménez",
+  "license": "MIT"
+  
+}
