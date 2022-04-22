@@ -1,9 +1,12 @@
 {
   "name": "package-a",
   "private": "true",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "author": "Daniel González Jiménez",
-  "license": "MIT"
-  
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "package-a": "^0.0.0"
+  }
 }

@@ -16,6 +16,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "resolutions": {
+    "coa": "2.0.2"
+  },
   "devDependencies": {
     "prettier": "^2.5.1",
     "@changesets/changelog-github": "^0.4.0",
