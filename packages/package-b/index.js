@@ -25,3 +25,10 @@ export function substract(a, b) {
 export function multiply(a, b) {
   return a * b;
 }
+
+/**
+ * Divide two numbers together
+ */
+export function divide(a, b) {
+  return a / b;
+}
