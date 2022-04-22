@@ -18,3 +18,11 @@ export function sum(a, b) {
 export function substract(a, b) {
   return a - b;
 }
+
+/**
+ * Multiply two numbers together
+ */
+export function multiply(a, b) {
+  return a * b;
+}
+
