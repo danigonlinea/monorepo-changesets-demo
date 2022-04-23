@@ -146,7 +146,7 @@
     fs-extra "^7.0.1"
     semver "^5.4.1"
 
-"@changesets/get-github-info@^0.5.0":
+"@changesets/get-github-info@0.5.0", "@changesets/get-github-info@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@changesets/get-github-info/-/get-github-info-0.5.0.tgz#b91ceb2d82edef78ae1598ea9fc335a012250295"
   integrity sha512-vm5VgHwrxkMkUjFyn3UVNKLbDp9YMHd3vMf1IyJoa/7B+6VpqmtAaXyDS0zBLfN5bhzVCHrRnj4GcZXXcqrFTw==
@@ -224,7 +224,7 @@
     fs-extra "^7.0.1"
     p-filter "^2.1.0"
 
-"@changesets/types@^4.0.1":
+"@changesets/types@4.1.0", "@changesets/types@^4.0.1":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@changesets/types/-/types-4.1.0.tgz#fb8f7ca2324fd54954824e864f9a61a82cb78fe0"
   integrity sha512-LDQvVDv5Kb50ny2s25Fhm3d9QSZimsoUGBsUioj6MC3qbMUCuC8GPIvk/M6IvXx3lYhAs0lwWUQLb+VIEUCECw==
@@ -287,6 +287,23 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@robingenz/changelog-github@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@robingenz/changelog-github/-/changelog-github-0.0.1.tgz#f0ecdd51e4b498221b57c7161c3ec0ae689bcc61"
+  integrity sha512-XkHXGEk9VZ6V8kfH4U/YW6BESIImN01gUwvG27XWSJf8+IwZe2cEvlyR4eRk7pmHXxvg2x+JEUaK827dMk4U7A==
+  dependencies:
+    "@changesets/get-github-info" "0.5.0"
+    "@changesets/types" "4.1.0"
+    dotenv "16.0.0"
+
+"@svitejs/changesets-changelog-github-compact@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@svitejs/changesets-changelog-github-compact/-/changesets-changelog-github-compact-0.1.1.tgz#ad46b266b96629623184424fe37a018089098dc1"
+  integrity sha512-eBi211CfmKtkxB6tINicaDPBMbolswPbaAy7kCx+uUFL/LxztLm9cB+7jP54TgCrv+mMz8vSJWIs/baH63PjsA==
+  dependencies:
+    "@changesets/get-github-info" "^0.5.0"
+    dotenv "^16.0.0"
 
 "@types/is-ci@^3.0.0":
   version "3.0.0"
@@ -540,6 +557,11 @@ dir-glob@^3.0.1:
   integrity sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   dependencies:
     path-type "^4.0.0"
+
+dotenv@16.0.0, dotenv@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.0.tgz#c619001253be89ebb638d027b609c75c26e47411"
+  integrity sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==
 
 dotenv@^8.1.0:
   version "8.6.0"
