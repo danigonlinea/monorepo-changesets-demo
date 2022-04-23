@@ -26,6 +26,7 @@
     "@changesets/cli": "^2.22.0",
     "@changesets/types": "^5.0.0",
     "@changesets/get-github-info": "^0.5.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "@svitejs/changesets-changelog-github-compact": "^0.1.1"
   }
 }
