@@ -1,7 +1,7 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
   "changelog": [
-    "@robingenz/changelog-github",
+    ".changeset/changelog-personal.js",
     { "repo": "danigonlinea/monorepo-changesets-demo" }
   ],
   "commit": false,
