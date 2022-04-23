@@ -21,8 +21,8 @@
     "coa": "2.0.2"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
-    "@changesets/changelog-github": "^0.4.0",
-    "@changesets/cli": "^2.16.0"
+    "prettier": "^2.6.2",
+    "@changesets/changelog-github": "^0.4.4",
+    "@changesets/cli": "^2.22.0"
   }
 }
