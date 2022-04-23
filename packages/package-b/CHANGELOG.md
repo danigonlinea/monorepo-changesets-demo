@@ -1,5 +1,11 @@
 # package-b
 
+## 0.2.0
+
+### Minor Changes
+
+- [#12](https://github.com/danigonlinea/monorepo-changesets-demo/pull/12) [`2184917`](https://github.com/danigonlinea/monorepo-changesets-demo/commit/2184917bde6d14612d7d4683ec931b1a62c5e979) Thanks [@danigonlinea](https://github.com/danigonlinea)! - Summary
+
 ## 0.1.0
 
 ### Minor Changes
