@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "changesets": "changeset",
     "make:version": "changeset version",
     "make:release": "changeset publish"
   },
