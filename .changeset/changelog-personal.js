@@ -1,51 +1,9 @@
-import { getInfo } from "@changesets/get-github-info";
-import { config } from "dotenv";
+const { getInfo } = require("@changesets/get-github-info");
+require("dotenv").config();
 
-config();
 
-const changelogFunctions = {
-  getDependencyReleaseLine: async (
-    changesets,
-    dependenciesUpdated,
-    options
-  ) => {
-    if (!options.repo) {
-      throw new Error(
-        'Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]'
-      );
-    }
-    if (dependenciesUpdated.length === 0) return "";
-
-    console.log('********** getDependencyReleaseLine')
-    console.log(JSON.stringify(changeset));
-    console.log('----------')
-
-   /*  const linkToUpdatedDependencies = (
-      await Promise.all(
-        changesets.map(async cs => {
-          if (cs.commit) {
-            let { links } = await getInfo({
-              repo: options.repo,
-              commit: cs.commit
-            });
-            return links.commit;
-          }
-        })
-      )
-    )
-      .filter(_ => _)
-      .join(", ") */
-
-    const changesetLink = `- Updated dependencies:`;
-
-    const updatedDepenenciesList = dependenciesUpdated.map(
-      dependency => `  - ${dependency.name}@${dependency.newVersion}`
-    );
-
-    return [changesetLink, ...updatedDepenenciesList].join("\n");
-  },
-  getReleaseLine: async (changeset, type, options) => {
-    if (!options || !options.repo) {
+const getReleaseLine = async (changeset, type, options) => {
+   if (!options || !options.repo) {
       throw new Error(
         'Please provide a repo to this changelog generator'
       );
@@ -125,7 +83,7 @@ const changelogFunctions = {
         // return links;
       //}
       
-      return {
+      return {  
         commit: null,
         pull: null,
         user: null
@@ -150,7 +108,64 @@ const changelogFunctions = {
     return `\n\n-${prefix ? `${prefix} -` : ""} ${firstLine}\n${futureLines
       .map(l => `  ${l}`)
       .join("\n")}`;
+};
+
+const getDependencyReleaseLine = async ( changesets,
+    dependenciesUpdated,
+    options) => {
+  
+   if (!options.repo) {
+      throw new Error(
+        'Please provide a repo to this changelog generator like this:\n"changelog": ["@changesets/changelog-github", { "repo": "org/repo" }]'
+      );
+    }
+    if (dependenciesUpdated.length === 0) return "";
+
+    console.log('********** getDependencyReleaseLine')
+    console.log(JSON.stringify(changeset));
+    console.log('----------')
+
+   /*  const linkToUpdatedDependencies = (
+      await Promise.all(
+        changesets.map(async cs => {
+          if (cs.commit) {
+            let { links } = await getInfo({
+              repo: options.repo,
+              commit: cs.commit
+            });
+            return links.commit;
+          }
+        })
+      )
+    )
+      .filter(_ => _)
+      .join(", ") */
+
+    const changesetLink = `- Updated dependencies:`;
+
+    const updatedDepenenciesList = dependenciesUpdated.map(
+      dependency => `  - ${dependency.name}@${dependency.newVersion}`
+    );
+
+    return [changesetLink, ...updatedDepenenciesList].join("\n");
+  
+};
+
+module.exports = {
+  getReleaseLine,
+  getDependencyReleaseLine
+}
+
+/* const changelogFunctions = {
+  getDependencyReleaseLine: async (
+    changesets,
+    dependenciesUpdated,
+    options
+  ) => {
+  },
+  getReleaseLine: async (changeset, type, options) => {
+   
   }
 };
 
-export default changelogFunctions;
+export default changelogFunctions; */
