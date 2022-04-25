@@ -43,14 +43,14 @@ const getReleaseLine = async (changeset, type, options) => {
       console.log('commitFromSummary', commitFromSummary);
 
 
-      //if (prFromSummary !== undefined) {
+      if (prFromSummary !== undefined) {
       
         let { user, commit, links } = await getInfoFromPullRequest({
           repo: options.repo,
           pull: prFromSummary
         });
 
-        console.log('---------- 2')
+        console.log('---------- prFromSummary')
         console.log(user, commit);
         console.log(JSON.stringify(links))
         console.log('---------- ')
@@ -63,25 +63,25 @@ const getReleaseLine = async (changeset, type, options) => {
           };
         }
         
-        // return links;
-      // }
+        return links;
+       }
 
       const commitToFetchFrom = commitFromSummary || changeset.commit;
 
       console.log('commitToFetchFrom', commitToFetchFrom);
-      //if (commitToFetchFrom) {
+      if (commitToFetchFrom) {
         let { user: user2, pull, links: links2 } = await getInfo({
           repo: options.repo,
           commit: commitToFetchFrom
         });
       
-       console.log('---------- 2')
+       console.log('---------- commitToFetchFrom')
         console.log(user2, pull);
         console.log(JSON.stringify(links2))
         console.log('---------- ')
       
         // return links;
-      //}
+      }
       
       return {  
         commit: null,
