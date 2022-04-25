@@ -122,7 +122,7 @@ const getDependencyReleaseLine = async ( changesets,
     if (dependenciesUpdated.length === 0) return "";
 
     console.log('********** getDependencyReleaseLine')
-    console.log(JSON.stringify(changeset));
+    console.log(JSON.stringify(changesets));
     console.log('----------')
 
    /*  const linkToUpdatedDependencies = (
