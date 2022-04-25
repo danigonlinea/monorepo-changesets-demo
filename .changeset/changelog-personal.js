@@ -1,4 +1,4 @@
-const { getInfo } = require("@changesets/get-github-info");
+const { getInfo, getInfoFromPullRequest } = require("@changesets/get-github-info");
 require("dotenv").config();
 
 
