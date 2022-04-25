@@ -15,7 +15,7 @@ const getReleaseLine = async (changeset, type, options) => {
 
     console.log('********** getReleaseLine \n\n')
     console.log(JSON.stringify(changeset));
-    console.log(type);
+    console.log(type, changeset.commit);
 
     const replacedChangelog = changeset.summary
       .replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
@@ -68,7 +68,6 @@ const getReleaseLine = async (changeset, type, options) => {
 
       const commitToFetchFrom = changeset.commit;
 
-      console.log('commitToFetchFrom', commitToFetchFrom);
       if (commitToFetchFrom) {
         let { user: user2, pull, links: links2 } = await getInfo({
           repo: options.repo,
@@ -76,6 +75,7 @@ const getReleaseLine = async (changeset, type, options) => {
         });
       
       
+        console.log(' ---------- Get the PR from commit changesets\n')
         console.log(user2, pull);
         console.log(JSON.stringify(links2))
         console.log('---------- \n\n')
@@ -86,7 +86,7 @@ const getReleaseLine = async (changeset, type, options) => {
           pull
         });
 
-        console.log(' ---------- FROM PULL REQUEST \n')
+        console.log(' ---------- Get info from PR \n')
         console.log(user);
         console.log(commit);
         console.log(JSON.stringify(links))

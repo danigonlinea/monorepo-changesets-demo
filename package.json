@@ -1,10 +1,9 @@
 {
   "name": "monorepo-changesets-demo",
   "private": "true",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "scripts": {
-    "changesets": "changeset",
     "make:version": "changeset version",
     "make:release": "changeset publish"
   },
@@ -26,8 +25,6 @@
     "@changesets/cli": "^2.22.0",
     "@changesets/types": "^5.0.0",
     "@changesets/get-github-info": "^0.5.0",
-    "dotenv": "^16.0.0",
-    "@svitejs/changesets-changelog-github-compact": "^0.1.1",
-    "@robingenz/changelog-github": "^0.0.1"
+    "dotenv": "^16.0.0"
   }
 }

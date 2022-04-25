@@ -1,7 +1,7 @@
 {
-  "name": "package-a",
+  "name": "monorepo-changesets-demo-a",
   "private": "true",
-  "version": "0.2.0",
+  "version": "0.0.0",
   "description": "",
   "author": "Daniel González Jiménez",
   "license": "MIT",
