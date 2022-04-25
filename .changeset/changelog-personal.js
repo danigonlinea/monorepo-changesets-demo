@@ -13,7 +13,7 @@ const getReleaseLine = async (changeset, type, options) => {
     let commitFromSummary = undefined;
     let usersFromSummary = [];
 
-    console.log('********** getReleaseLine')
+    console.log('********** getReleaseLine \n\n')
     console.log(JSON.stringify(changeset));
     console.log(type);
 
@@ -39,11 +39,11 @@ const getReleaseLine = async (changeset, type, options) => {
 
     const links = await (async () => {
 
-      console.log('prFromSummary', prFromSummary);
-      console.log('commitFromSummary', commitFromSummary);
+      // console.log('prFromSummary', prFromSummary);
+      // console.log('commitFromSummary', commitFromSummary);
 
 
-      if (prFromSummary !== undefined) {
+      /* if (prFromSummary !== undefined) {
       
         let { user, commit, links } = await getInfoFromPullRequest({
           repo: options.repo,
@@ -64,9 +64,9 @@ const getReleaseLine = async (changeset, type, options) => {
         }
         
         return links;
-       }
+       } */
 
-      const commitToFetchFrom = commitFromSummary || changeset.commit;
+      const commitToFetchFrom = changeset.commit;
 
       console.log('commitToFetchFrom', commitToFetchFrom);
       if (commitToFetchFrom) {
@@ -75,11 +75,22 @@ const getReleaseLine = async (changeset, type, options) => {
           commit: commitToFetchFrom
         });
       
-       console.log('---------- commitToFetchFrom')
+      
         console.log(user2, pull);
         console.log(JSON.stringify(links2))
-        console.log('---------- ')
+        console.log('---------- \n\n')
       
+
+        let { user, commit, links } = await getInfoFromPullRequest({
+          repo: options.repo,
+          pull
+        });
+
+        console.log(' ---------- FROM PULL REQUEST \n')
+        console.log(user);
+        console.log(commit);
+        console.log(JSON.stringify(links))
+        console.log('----------\n\n ')
         // return links;
       }
       
@@ -121,25 +132,25 @@ const getDependencyReleaseLine = async ( changesets,
     }
     if (dependenciesUpdated.length === 0) return "";
 
-    console.log('********** getDependencyReleaseLine')
-    console.log(JSON.stringify(changesets));
-    console.log('----------')
+    // console.log('********** getDependencyReleaseLine \n\n')
+    // console.log(JSON.stringify(changesets));
+    // console.log('----------')
 
-   /*  const linkToUpdatedDependencies = (
-      await Promise.all(
-        changesets.map(async cs => {
-          if (cs.commit) {
-            let { links } = await getInfo({
-              repo: options.repo,
-              commit: cs.commit
-            });
-            return links.commit;
-          }
-        })
-      )
-    )
-      .filter(_ => _)
-      .join(", ") */
+    // const linkToUpdatedDependencies = (
+    //   await Promise.all(
+    //     changesets.map(async cs => {
+    //       if (cs.commit) {
+    //         let { links } = await getInfo({
+    //           repo: options.repo,
+    //           commit: cs.commit
+    //         });
+    //         return links.commit;
+    //       }
+    //     })
+    //   )
+    // )
+    //   .filter(_ => _)
+    //   .join(", ")
 
     const changesetLink = `- Updated dependencies:`;
 
