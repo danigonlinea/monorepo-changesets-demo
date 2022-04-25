@@ -1,5 +1,4 @@
-import { getInfo, getInfoFromPullRequest } from "@changesets/get-github-info";
-// @ts-ignore
+import { getInfo } from "@changesets/get-github-info";
 import { config } from "dotenv";
 
 config();
@@ -17,7 +16,11 @@ const changelogFunctions = {
     }
     if (dependenciesUpdated.length === 0) return "";
 
-    const changesetLink = `- Updated dependencies [${(
+    console.log('********** getDependencyReleaseLine')
+    console.log(JSON.stringify(changeset));
+    console.log('----------')
+
+   /*  const linkToUpdatedDependencies = (
       await Promise.all(
         changesets.map(async cs => {
           if (cs.commit) {
@@ -31,7 +34,9 @@ const changelogFunctions = {
       )
     )
       .filter(_ => _)
-      .join(", ")}]:`;
+      .join(", ") */
+
+    const changesetLink = `- Updated dependencies:`;
 
     const updatedDepenenciesList = dependenciesUpdated.map(
       dependency => `  - ${dependency.name}@${dependency.newVersion}`
@@ -49,6 +54,10 @@ const changelogFunctions = {
     let prFromSummary = undefined;
     let commitFromSummary = undefined;
     let usersFromSummary = [];
+
+    console.log('********** getReleaseLine')
+    console.log(JSON.stringify(changeset));
+    console.log(type);
 
     const replacedChangelog = changeset.summary
       .replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
@@ -71,27 +80,51 @@ const changelogFunctions = {
       .map(l => l.trimRight());
 
     const links = await (async () => {
-      if (prFromSummary !== undefined) {
-        let { links } = await getInfoFromPullRequest({
+
+      console.log('prFromSummary', prFromSummary);
+      console.log('commitFromSummary', commitFromSummary);
+
+
+      //if (prFromSummary !== undefined) {
+      
+        let { user, commit, links } = await getInfoFromPullRequest({
           repo: options.repo,
           pull: prFromSummary
         });
+
+        console.log('---------- 2')
+        console.log(user, commit);
+        console.log(JSON.stringify(links))
+        console.log('---------- ')
+
+        
         if (commitFromSummary) {
           links = {
             ...links,
             commit: `[\`${commitFromSummary}\`](https://github.com/${options.repo}/commit/${commitFromSummary})`
           };
         }
-        return links;
-      }
+        
+        // return links;
+      // }
+
       const commitToFetchFrom = commitFromSummary || changeset.commit;
-      if (commitToFetchFrom) {
-        let { links } = await getInfo({
+
+      console.log('commitToFetchFrom', commitToFetchFrom);
+      //if (commitToFetchFrom) {
+        let { user: user2, pull, links: links2 } = await getInfo({
           repo: options.repo,
           commit: commitToFetchFrom
         });
-        return links;
-      }
+      
+       console.log('---------- 2')
+        console.log(user2, pull);
+        console.log(JSON.stringify(links2))
+        console.log('---------- ')
+      
+        // return links;
+      //}
+      
       return {
         commit: null,
         pull: null,
